@@ -310,22 +310,9 @@ document.getElementById("diagramY").innerText =
         D = A;
 
 
-        // B = Z(1 + YZ/4)
+        // B = Z
 
-        const YZ_over_4 = complex(
-            YZ.real / 4,
-            YZ.imag / 4
-        );
-
-        const onePlusYZ4 = complexAdd(
-            complex(1, 0),
-            YZ_over_4
-        );
-
-        B = complexMul(
-            Z_total,
-            onePlusYZ4
-        );
+B = Z_total;
 
 
         // C = Y(1 + YZ/4)
