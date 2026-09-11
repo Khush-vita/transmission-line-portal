@@ -283,46 +283,54 @@ document.getElementById("diagramY").innerText =
         D = complex(1, 0);
     }
 
+// --------------------------------------------------
+// MEDIUM LINE - NOMINAL PI
+// --------------------------------------------------
 
-    // --------------------------------------------------
-    // MEDIUM LINE - NOMINAL PI
-    // --------------------------------------------------
+else if (L <= 250) {
 
-    else if (L <= 250) {
+    // A = D = 1 + YZ/2
 
-        // A = D = 1 + YZ/2
+    const YZ = complexMul(
+        Y_total,
+        Z_total
+    );
 
-        const YZ = complexMul(
-            Y_total,
-            Z_total
-        );
+    const YZ_over_2 = complex(
+        YZ.real / 2,
+        YZ.imag / 2
+    );
 
-        const YZ_over_2 = complex(
-            YZ.real / 2,
-            YZ.imag / 2
-        );
+    A = complexAdd(
+        complex(1, 0),
+        YZ_over_2
+    );
 
-        A = complexAdd(
-            complex(1, 0),
-            YZ_over_2
-        );
-
-        D = A;
-
-
-        // B = Z
-
-B = Z_total;
+    D = A;
 
 
-        // C = Y(1 + YZ/4)
+    // B = Z
 
-        C = complexMul(
-            Y_total,
-            onePlusYZ4
-        );
-    }
+    B = Z_total;
 
+
+    // C = Y(1 + YZ/4)
+
+    const YZ_over_4 = complex(
+        YZ.real / 4,
+        YZ.imag / 4
+    );
+
+    const onePlusYZ4 = complexAdd(
+        complex(1, 0),
+        YZ_over_4
+    );
+
+    C = complexMul(
+        Y_total,
+        onePlusYZ4
+    );
+}
 
     // --------------------------------------------------
     // LONG LINE
